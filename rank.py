@@ -57,21 +57,15 @@ def make_result(args, D, I, panorama_id):
         for n, q_idx in enumerate(range(I.shape[0])):
             #print(f"D is \n{D}")    # 두 대상의 유사도 높은 순으로 나열 
             #print(f"I is \n{I}\n")  # 유사도 높은 순서인 애들의 DB에서의 인덱스 
-            #print([db_idx for i in range(I.shape[1])])
             for db_idx in range(I.shape[1]):
-                print(f"=="*100)
-                print(f"D[q_idx][db_idx is {D[q_idx][db_idx]}")
-                #txt = q_imgs_path_list[q_idx].split('/')[-1]+','+db_imgs_path_list[I[q_idx][db_idx]].split('/')[-1]+','+str(D[q_idx][db_idx])
+                print(f"="*80)
                 txt = str(q_idx)+','+str(I[q_idx][db_idx])+','+str(D[q_idx][db_idx])
-                print(f"D is {D}")
-                print(f"=="*100)
+                print(f"query, db, similarity:\t\t{txt}\n")
                 f.write(txt+'\n')
+    print(f"re-ranking is done")
 
         
 def main(args, query_feature, reference_feature, panorama_id):
-    #img_dir_idx = query_path.split('/')[-2]
-    #q_tmp_img_dir_idx = os.path.join(args.q_img_path, img_dir_idx)
-    #q_imgs = os.listdir(q_tmp_img_dir_idx)
 
     D, I = search(args, query_feature, reference_feature)
     make_result(args, D, I, panorama_id)
@@ -79,10 +73,6 @@ def main(args, query_feature, reference_feature, panorama_id):
 if __name__ == '__main__':
     # feature extractor args 
     parser = argparse.ArgumentParser(description='Extract frame feature')
-    parser.add_argument('--root_path', type=str, default='/home/signboard_retrieval/')
-    parser.add_argument('--q_img_path', type=str, default='/home/signboard_retrieval/panorama_crop/q_crop_val/')
-    parser.add_argument('--db_img_path', type=str, default='/home/signboard_retrieval/panorama_crop/db_crop_val/')
-    parser.add_argument('--feature_path', type=str, default='/home/signboard_retrieval/features')
     parser.add_argument('--result_path', type=str, default='/home/signboard_retrieval/result')
     parser.add_argument('--batch_size', type=int, default=64)
     parser.add_argument('--num_workers', type=int, default=0)

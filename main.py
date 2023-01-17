@@ -32,10 +32,6 @@ def main(args, q_panorama_list, db_panorama_list, q_crop_list, db_crop_list, pan
 if __name__ == '__main__':
     # feature extractor args 
     parser = argparse.ArgumentParser(description='Extract frame feature') 
-    parser.add_argument('--root_path', type=str, default='/home/signboard_retrieval/') 
-    parser.add_argument('--q_img_path', type=str, default='/home/signboard_retrieval/panorama_crop/q_crop_val/')
-    parser.add_argument('--db_img_path', type=str, default='/home/signboard_retrieval/panorama_crop/db_crop_val/')
-    parser.add_argument('--feature_path', type=str, default='/home/signboard_retrieval/features')
     parser.add_argument('--result_path', type=str, default='/home/signboard_retrieval/result')
     parser.add_argument('--batch_size', type=int, default=64) 
     parser.add_argument('--num_workers', type=int, default=0)

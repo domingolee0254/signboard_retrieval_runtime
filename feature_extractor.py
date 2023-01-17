@@ -24,6 +24,7 @@ import timm
 
 from dataset import AugmentedDataset
 from model import vit_base_patch8_224_dino, beitv2_large_patch16_224_in22k, swin_large_patch4_window12_384_in22k
+from transformers import ViTMAEConfig, ViTMAEModel
 
 def find_files(args):
     q_idx_path_list = []
@@ -124,10 +125,6 @@ def main(args, q_crop_list, db_crop_list):
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Extract frame feature')
-    parser.add_argument('--root_path', type=str, default='/home/signboard_retrieval/')
-    parser.add_argument('--q_img_path', type=str, default='/home/signboard_retrieval/panorama_crop/q_crop_val')
-    parser.add_argument('--db_img_path', type=str, default='/home/signboard_retrieval/panorama_crop/db_crop_val')
-    parser.add_argument('--feature_path', type=str, default='/home/signboard_retrieval/features')
     parser.add_argument('--result_path', type=str, default='/home/signboard_retrieval/result')
     parser.add_argument('--batch_size', type=int, default=64)
     parser.add_argument('--num_workers', type=int, default=0)
