@@ -1,13 +1,25 @@
-# Near-duplicated Image Retrieval
-Dataset: simulated dataset
+# ViT 설명
 
-### Image Retrieval System
-![Image_Retrieval_System](./imgs/image_retrieval_system.png) 
+# 간판 특징 추출 엔진
 
-### Near-duplicated Image
-![Image_Retrieval_System](./imgs/near_duplicate.jpg) 
+---
 
-1. Extract Image Feature
-```python extract_simulated.py```
-2. Get average rank
-```python get_rank_simulated.py```
+### Dataset
+
+파노라마 뷰 이미지 
+
+### Learning based feature extractor s**ystem**
+
+![Image_Retrieval_System](./imgs/image_retrieval_system.png)
+
+```bash
+#1. Extract Image Feature
+python feature_extractor.py
+
+#2. Get retrieval ranking
+python rank.py
+```
+
+### Argument
+
+--result_path=ViT로 inference한 간판 매칭 결과 저장 경로
